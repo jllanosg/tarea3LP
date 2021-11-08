@@ -45,19 +45,13 @@ public class Monstruo implements Enemigo{
                     Mision m = player.getLista_misiones().get(i);
                     if (m.getRequisito() == 'm'){
                         m.setCantidad(m.getCantidad()+1);
-                    }
-                }
-
-                for (Mision m:player.getLista_misiones()) {
-                    if (m.getRequisito() == 'm'){
-                        m.setCantidad(m.getCantidad()+1);
                         if (m.verificar_requisito()){
-                            System.out.println("Has completado una misión tipo m! recompensa: "+m.getRecompensa());
+                            System.out.println("Has completado una misión de matar! recompensa: "+m.getRecompensa());
                             player.subir_experiencia(m.getRecompensa());
                             player.getLista_misiones().remove(m);
-                            }
                         }
                     }
+                }
                 break;
                 }
             player.setVida(player.getVida()-dano);

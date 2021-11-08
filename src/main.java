@@ -42,7 +42,7 @@ public class main {
             //PROBABILIDAD DE ENEMIGO
             System.out.println("Ingrese probabilidad de enemigo para la tierra "+i);
             float prob = in.nextFloat();
-            System.out.println(prob);
+
             in.nextLine();
             //CREACIÓN MONSTRUO O JEFE FINAL
             System.out.println("Desea colocar:\n 1 --> MONSTRUO\n 2 --> JEFE FINAL\n 3 --> NO");
@@ -109,7 +109,6 @@ public class main {
                         valor = in.nextInt();
                         System.out.println("Ingrese valor de -recompensa-: ");
                         recompensa = in.nextInt();
-                        System.out.println("req = "+requisito+"valor = "+valor);
                         npc = new Neutro(nombre, requisito, valor, recompensa);
                     }
                 }
@@ -154,7 +153,7 @@ public class main {
         while (action != 3){
 
             if (action == 1){
-                System.out.println("Ingrese una dirección: \n 1 --> DERECHA\n 2 --> IZQUIERda");
+                System.out.println("Ingrese una dirección: \n 1 --> DERECHA\n 2 --> IZQUIERDA");
                 int opt = in.nextInt();
                 if (opt == 1){
                     int pos = player.getPosicion();
@@ -164,11 +163,14 @@ public class main {
                         pos++;
                     }
                     if (mundo.get(pos).accion(player)){
+                        System.out.printf("* logras moverte a la tierra de posición numero "+pos+" *");
                         player.setPosicion(pos);
-                        for (Mision m:player.getLista_misiones()) {
-                            if (m.getRequisito() == 'v') {
+                        for (int i =0 ; i < player.getLista_misiones().size();i++){
+                            Mision m = player.getLista_misiones().get(i);
+                            if (m.getRequisito() == 'v'){
                                 m.setCantidad(player.getPosicion());
                                 if (m.verificar_requisito()) {
+                                    System.out.printf("Felicidades! Has completado una misión de viaje. Recibes "+m.getRecompensa()+" Xp.");
                                     player.subir_experiencia(m.getRecompensa());
                                     player.getLista_misiones().remove(m);
                                 }
@@ -179,7 +181,7 @@ public class main {
                             System.out.println("***** muelto *****");
                             break;
                         }else{
-                            System.out.println("No puedes pasar !");
+                            System.out.println("* no logras pasar *");
                         }
                     }
                 }else if (opt == 2){
@@ -190,11 +192,14 @@ public class main {
                         pos--;
                     }
                     if (mundo.get(pos).accion(player)){
+                        System.out.printf("* logras moverte a la tierra de posición numero "+pos+" *");
                         player.setPosicion(pos);
-                        for (Mision m:player.getLista_misiones()) {
-                            if (m.getRequisito() == 'v') {
+                        for (int i =0 ; i < player.getLista_misiones().size();i++){
+                            Mision m = player.getLista_misiones().get(i);
+                            if (m.getRequisito() == 'v'){
                                 m.setCantidad(player.getPosicion());
                                 if (m.verificar_requisito()) {
+                                    System.out.printf("Felicidades! Has completado una misión de viaje. Recibes "+m.getRecompensa()+" Xp.");
                                     player.subir_experiencia(m.getRecompensa());
                                     player.getLista_misiones().remove(m);
                                 }
@@ -205,10 +210,9 @@ public class main {
                             System.out.println("***** muelto *****");
                             break;
                         }else{
-                            System.out.println("No puedes pasar !");
+                            System.out.println("* no logras pasar *");
                         }
                     }
-
                 }
             }else if(action == 2){
                 System.out.println("_________________________________");

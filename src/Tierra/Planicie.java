@@ -18,16 +18,16 @@ public class Planicie extends Tierra{
             getNpc().interaccion(player);
         }
         if (getMonstruo() != null){
-            int prob = (int)getProbabilidad_enemigo()*100;
+            int prob = (int)(getProbabilidad_enemigo()*100);
             int rand = randInt(0,100);
-            System.out.println("prob: "+prob+"%"+" dado: "+rand);
+
             if (rand <= prob){
                 getMonstruo().combate(player);
             }
         }else if (getJefe_final() != null){
-            int prob = (int)getProbabilidad_enemigo()*100;
+            int prob = (int)(getProbabilidad_enemigo()*100);
             int rand = randInt(0,100);
-            System.out.println("prob:"+prob+"%"+" dado:"+rand);
+
             if (rand <= prob){
                 getJefe_final().combate(player);
             }

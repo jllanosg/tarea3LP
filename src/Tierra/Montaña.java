@@ -21,22 +21,23 @@ public class Montaña extends Tierra{
         }else if (energia == 1 || energia == 2){
             player.setVida(player.getVida() -(3-energia));
             if (player.getVida()<=0) return false;
-
+            System.out.printf("* pierdes "+(3-energia)+" de energía para llegar a esta montaña *\n");
         }else{
             player.setEnergia(player.getEnergia()-3);
+            System.out.printf("* pierdes 3 de energía para llegar a esta montaña *\n");
         }
 
         if (getNpc() != null) {
             getNpc().interaccion(player);
         }
         if (getMonstruo() != null){
-            int prob = (int)getProbabilidad_enemigo()*100;
+            int prob = (int)(getProbabilidad_enemigo()*100);
             int rand = randInt(0,100);
             if (rand <= prob){
                 getMonstruo().combate(player);
             }
         }else if (getJefe_final() != null){
-            int prob = (int)getProbabilidad_enemigo()*100;
+            int prob = (int)(getProbabilidad_enemigo()*100);
             int rand = randInt(0,100);
             if (rand <= prob){
                 getJefe_final().combate(player);

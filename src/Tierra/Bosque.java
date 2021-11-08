@@ -22,21 +22,22 @@ public class Bosque extends Tierra {
             if (player.getVida()<=0){
                 return false;
             }
-
+            System.out.printf("* pierdes "+(3-mana)+" de mana para llegar a este bosque *\n");
         }else{
             player.setMana(player.getMana()-3);
+            System.out.printf("* pierdes 3 de mana para llegar a este bosque *\n");
         }
         if (getNpc() != null) {
             getNpc().interaccion(player);
         }
         if (getMonstruo() != null){
-            int prob = (int)getProbabilidad_enemigo()*100;
+            int prob = (int)(getProbabilidad_enemigo()*100);
             int rand = randInt(0,100);
             if (rand <= prob){
                 getMonstruo().combate(player);
             }
         }else if (getJefe_final() != null){
-            int prob = (int)getProbabilidad_enemigo()*100;
+            int prob = (int)(getProbabilidad_enemigo()*100);
             int rand = randInt(0,100);
             if (rand <= prob){
                 getJefe_final().combate(player);

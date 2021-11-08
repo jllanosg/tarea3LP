@@ -94,14 +94,14 @@ public abstract class Jugador {
 
     public void setEnergia(int energia) {
         this.energia = energia;
-        if (this.energia<=0){
+        if (this.energia==0){
             System.out.println("Te quedaste sin energía!");
         }
     }
 
     public void setMana(int mana) {
         this.mana = mana;
-        if (this.mana<=0){
+        if (this.mana==0){
             System.out.println("Te quedaste sin maná!");
         }
     }
